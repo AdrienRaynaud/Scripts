@@ -50,19 +50,12 @@ cp /root/.docker/{ca,cert,key}.pem /home/vagrant/.docker/
 chown vagrant:vagrant /home/vagrant/.docker/*
 
 # Parametrage des clients docker pour chaque utilisateur de la machine
+# Compte root
+echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /root/.bashrc
+echo "export DOCKER_TLS_VERIFY=1" >> /root/.bashrc
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Compte vagrant
+echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /home/vagrant/.bashrc
+echo "export DOCKER_TLS_VERIFY=1" >> /home/vagrant/.bashrc
 
 

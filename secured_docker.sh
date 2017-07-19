@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Creation reseau docker de type bridge
-#docker network create -d bridge my_network
-#docker network ls
+docker network create -d bridge my_network
+docker network ls
 
 # Creation du dossier pour les certificats 
 mkdir /root/.docker
@@ -53,9 +53,16 @@ chown vagrant:vagrant /home/vagrant/.docker/*
 # Compte root
 echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /root/.bashrc
 echo "export DOCKER_TLS_VERIFY=1" >> /root/.bashrc
+source /root/.bashrc
+#export DOCKER_HOST=tcp://localhost.localdomain:2376
+#export DOCKER_TLS_VERIFY=1
 
 # Compte vagrant
 echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /home/vagrant/.bashrc
 echo "export DOCKER_TLS_VERIFY=1" >> /home/vagrant/.bashrc
+source /home/vagrant/.bashrc
+#export DOCKER_HOST=tcp://localhost.localdomain:2376
+#export DOCKER_TLS_VERIFY=1 
+
 
 

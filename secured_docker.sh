@@ -38,7 +38,7 @@ chmod -v 0400 ca-key.pem key.pem server-key.pem
 chmod -v 0444 ca.pem server-cert.pem cert.pem
 
 # Configuration du daemon docker pour accepter uniquement les connexions provenant de clients validés par notre CA
-sed -i 's/dockerd/dockerd -H tcp:\/\/0.0.0.0:2376 --tlsverify --tlscacert=\/home\/vagrant\/.docker\/ca.pem --tlscert=\/home\/vagrant\/.docker\/server-cert.pem --tlskey=\/home\/vagrant\/.docker\/server-key.pem/' /usr/lib/systemd/system/docker.service
+sed -i 's/dockerd/dockerd -H tcp:\/\/0.0.0.0:2376 --tlsverify --tlscacert=\/root\/.docker\/ca.pem --tlscert=\/root\/.docker\/server-cert.pem --tlskey=\/root\/.docker\/server-key.pem/' /usr/lib/systemd/system/docker.service
 
 # Redemarrage du daemon docker
 systemctl daemon-reload

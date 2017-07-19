@@ -37,7 +37,7 @@ rm -v client.csr server.csr
 chmod -v 0400 ca-key.pem key.pem server-key.pem
 chmod -v 0444 ca.pem server-cert.pem cert.pem
 
-# Configuration du daemon docker pour accepter uniquement les connexions provenant de clients validés par notre CA
+# Configuration du daemon docker pour accepter uniquement les connexions provenant de clients valides par notre CA
 sed -i 's/dockerd/dockerd -H tcp:\/\/0.0.0.0:2376 --tlsverify --tlscacert=\/root\/.docker\/ca.pem --tlscert=\/root\/.docker\/server-cert.pem --tlskey=\/root\/.docker\/server-key.pem/' /usr/lib/systemd/system/docker.service
 
 # Redemarrage du daemon docker
@@ -46,8 +46,10 @@ systemctl restart docker
 
 # Copie des cle dans le home directory vagrant
 mkdir /home/vagrant/.docker
-cp /root/.docker/* /home/vagrant/.docker/
+cp /root/.docker/{ca,cert,key}.pem /home/vagrant/.docker/
 chown vagrant:vagrant /home/vagrant/.docker/*
+
+# Parametrage des clients docker pour chaque utilisateur de la machine
 
 
 

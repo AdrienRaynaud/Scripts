@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+  gitlab:
+    container_name: gitlab
+    hostname: gitlab
+    image: gitlab/gitlab-ce:8.5.8-ce.0
+    ports:
+      - "8180:80"
+      - "8122:22"
+    networks:
+      - my_network
+    volumes:
+      - /home/vagrant/volumes/gitlab/config:/etc/gitlab
+      - /home/vagrant/volumes/gitlab/logs:/var/log/gitlab
+      - /home/vagrant/volumes/gitlab/data:/var/opt/gitlab
+    restart: always
+
+  jenkins:
+    container_name: jenkins
+    hostname: jenkins
+    image: jenkinsci/jenkins:2.0-beta-1
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - /home/vagrant/volumes/jenkins:/var/jenkins_home
+
+  devenv:
+    container_name: devenv
+    hostname: devenv
+    image: devenv
+    ports:
+      - "8090:8090"
+    volumes:
+      - /home/vagrant/volumes/devenv/hello-world/:/var/hello-world/
+  
+  portainer:
+    container_name: portainer
+    hostname: portainer
+    image: portainer/portainer
+    
+      
+
+volumes :
+  gitlab:
+    driver: local
+  jenkins:
+    driver: local

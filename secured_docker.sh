@@ -54,15 +54,10 @@ chown vagrant:vagrant /home/vagrant/.docker/*
 echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /root/.bashrc
 echo "export DOCKER_TLS_VERIFY=1" >> /root/.bashrc
 source /root/.bashrc
-#export DOCKER_HOST=tcp://localhost.localdomain:2376
-#export DOCKER_TLS_VERIFY=1
 
 # Compte vagrant
 echo "export DOCKER_HOST=tcp://localhost.localdomain:2376" >> /home/vagrant/.bashrc
 echo "export DOCKER_TLS_VERIFY=1" >> /home/vagrant/.bashrc
-source /home/vagrant/.bashrc
-#export DOCKER_HOST=tcp://localhost.localdomain:2376
-#export DOCKER_TLS_VERIFY=1 
 
 
 
